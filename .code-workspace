@@ -1,0 +1,14 @@
+// This file was created by the Python extension for Visual Studio Code.
+// For more information, see https://code.visualstudio.com/docs/editor/workspaces
+// The settings in this file override the default settings for the workspace.
+// To learn more about workspace settings, see https://code.visualstudio.com/docs/getstarted/keybindings#_workspace-settings
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "D:/Portable Python-3.10.5 x64/App/Python/python.exe"
+  }
+}

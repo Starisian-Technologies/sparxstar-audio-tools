@@ -1,0 +1,290 @@
+/* Basic Settings & Variables */
+:root {
+    --primary-color: #0066cc; /* Slightly more standard blue */
+    --primary-color-dark: #004c99;
+    --secondary-color: #555; /* Darker gray for better contrast */
+    --correct-color: #28a745;
+    --correct-color-dark: #1e7e34;
+    --incorrect-color: #dc3545;
+    --background-color: #f0f0f0; /* Lighter, simpler background */
+    --card-background: #ffffff;
+    --text-color: #222; /* Higher contrast text */
+    --light-text-color: #fff;
+    --border-color: #ccc; /* Clearer border color */
+    --border-radius: 6px; /* Slightly smaller radius, often renders cleaner */
+    --font-main: Arial, Helvetica, sans-serif; /* System fonts priority */
+}
+
+body { /* Apply to the quiz container if possible */
+    font-family: var(--font-main);
+    color: var(--text-color);
+    line-height: 1.5; /* Adjusted for readability */
+}
+
+#aiwa_mandinka_quiz {
+    max-width: 480px;
+    margin: 10px auto; /* Reduced margin for smaller screens */
+    padding: 10px;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color); /* Define the container */
+    border-radius: var(--border-radius);
+    /* Lighter, simpler shadow or remove if it impacts performance */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+#aiwa_mandinka_quiz_heading {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.6em; /* Slightly reduced for balance */
+}
+
+/* Welcome Area */
+#aiwa_welcome_area {
+    text-align: center;
+    padding: 15px 10px;
+}
+#aiwa_welcome_area p {
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+#aiwa_quiz_controls .aiwa_start_button { /* For Start Mandinka->Eng & Eng->Mandinka buttons */
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: var(--correct-color);
+    color: var(--light-text-color);
+}
+#aiwa_quiz_controls .aiwa_start_button:hover {
+    background-color: var(--correct-color-dark);
+}
+#aiwa_quiz_controls .aiwa_start_button:last-child {
+    margin-bottom: 0;
+}
+
+
+/* Quiz Area */
+#aiwa_quiz_area {
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#aiwa_question_prompt {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    min-height: 1.2em;
+    font-size: 0.9em;
+}
+
+.aiwa_word_card {
+    background-color: var(--card-background);
+    padding: 25px 15px;
+    margin: 0 auto 15px auto;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#aiwa_word_to_translate {
+    font-size: 2em; /* Still prominent but balanced */
+    font-weight: bold;
+    color: var(--primary-color);
+    line-height: 1.2;
+}
+
+/* Input Group */
+.aiwa_input_group {
+    margin-bottom: 15px;
+}
+.aiwa_input_group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: left;
+    font-size: 0.95em;
+}
+#aiwa_answer_input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1em;
+    box-sizing: border-box;
+}
+#aiwa_answer_input:focus {
+    border-color: var(--primary-color);
+    outline: 1px solid var(--primary-color); /* Simpler focus indicator */
+    /* Avoid box-shadow for focus on low-end devices if it causes lag */
+}
+
+/* Action Buttons */
+.aiwa_action_buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.aiwa_action_buttons button { /* Specific to submit, next */
+    width: 100%;
+}
+
+#aiwa_submit_answer,
+#aiwa_next_question {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+}
+#aiwa_submit_answer:hover,
+#aiwa_next_question:hover {
+    background-color: var(--primary-color-dark);
+}
+
+#aiwa_speak_word {
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
+    font-size: 1em;
+}
+#aiwa_speak_word:hover {
+    background-color: #333; /* Darker gray */
+}
+
+
+/* General Button Styles - Applied to all buttons in the quiz */
+#aiwa_mandinka_quiz button {
+    padding: 12px 15px; /* Good touch target size */
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold; /* Ensure button text is clear */
+    transition: background-color 0.1s ease; /* Very short transition */
+    text-align: center;
+}
+#aiwa_mandinka_quiz button:active {
+    /* transform: translateY(1px); Minor press effect, test for jank */
+    opacity: 0.85; /* Simpler active state */
+}
+#aiwa_mandinka_quiz button:disabled {
+    background-color: #bbb; /* Clearer disabled state */
+    color: #777;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+#aiwa_mandinka_quiz button:focus-visible { /* Accessibility */
+    outline: 2px solid var(--primary-color-dark);
+    outline-offset: 1px;
+}
+
+
+/* Feedback Area - Simplified */
+#aiwa_feedback_area {
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+    min-height: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, color 0.2s ease; /* Faster transition */
+    border: 1px solid transparent; /* For structure */
+}
+
+#aiwa_feedback_area.correct {
+    background-color: var(--correct-color);
+    color: var(--light-text-color);
+    border-color: var(--correct-color-dark);
+    /* Optional: subtle animation, test for performance */
+    /* animation: feedback-pop-simple 0.2s ease-out; */
+}
+
+#aiwa_feedback_area.incorrect {
+    background-color: var(--incorrect-color);
+    color: var(--light-text-color);
+    border-color: #a71d2a; /* Darker red border */
+    /* No shake animation by default to save performance */
+}
+
+/* If you want a very simple pop animation: */
+/*
+@keyframes feedback-pop-simple {
+    50% { transform: scale(1.02); }
+}
+*/
+
+#aiwa_feedback_area .feedback-text {
+    margin-right: 5px;
+}
+#aiwa_feedback_area .feedback-icon { /* Use simple text icons like ✔️ or ❌ if they render well, otherwise just text */
+    font-size: 1.1em;
+}
+#aiwa_feedback_area .correct-answer-text {
+    display: block;
+    font-size: 0.9em;
+    font-weight: normal;
+    margin-top: 4px;
+}
+
+
+/* Score, Streak, and Progress */
+#aiwa_progress_and_score {
+    padding: 8px 10px;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    margin-bottom: 10px;
+}
+#aiwa_score_area,
+#aiwa_streak_area {
+    font-size: 0.95em;
+    color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 8px;
+}
+#aiwa_score_area span,
+#aiwa_streak_area span {
+    font-weight: bold;
+    color: var(--text-color);
+}
+#aiwa_current_streak { /* Make streak number stand out, remove 🔥 if problematic */
+    color: var(--primary-color) !important;
+}
+#aiwa_streak_area:last-child {
+    margin-bottom: 0; /* If no progress bar below it */
+}
+
+
+#aiwa_progress_bar_container {
+    width: 100%;
+    background-color: #ddd; /* Slightly darker background for progress bar */
+    border-radius: 10px;
+    height: 12px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+#aiwa_progress_bar {
+    width: 0%; /* JS controlled */
+    height: 100%;
+    background-color: var(--correct-color);
+    border-radius: 10px;
+    /* Slower, smoother transition if any, or remove if laggy */
+    transition: width 0.4s ease;
+}
+
+
+/* Screen Reader Only Text */
+.aiwa_sr_only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* No complex media queries unless absolutely necessary for fixing layout breaks.
+   The stacked column layout should adapt well to most small screens. */

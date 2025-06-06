@@ -1,0 +1,303 @@
+/* Basic Reset & Body Styles */
+:root {
+    --primary-color: #007bff; /* Example: Blue */
+    --primary-color-dark: #0056b3;
+    --secondary-color: #6c757d; /* Example: Gray */
+    --correct-color: #28a745; /* Green */
+    --incorrect-color: #dc3545; /* Red */
+    --background-color: #f8f9fa;
+    --card-background: #ffffff;
+    --text-color: #333;
+    --light-text-color: #fff;
+    --border-color: #dee2e6;
+    --border-radius: 8px;
+    --shadow: 0 4px 8px rgba(0,0,0,0.1);
+    --font-main: 'Arial', sans-serif; /* Consider a more playful web font */
+}
+
+body { /* Assuming this is within a WordPress page, target the quiz specifically */
+    font-family: var(--font-main);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+#aiwa_mandinka_quiz {
+    max-width: 500px; /* Max width for larger screens, full width on mobile */
+    margin: 20px auto;
+    padding: 15px;
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden; /* Contains children with negative margins if any */
+}
+
+#aiwa_mandinka_quiz_heading {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+/* Welcome Area */
+#aiwa_welcome_area {
+    text-align: center;
+    padding: 20px;
+}
+#aiwa_welcome_area p {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+#aiwa_quiz_controls .aiwa_start_button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+#aiwa_quiz_controls .aiwa_start_button:last-child {
+    margin-bottom: 0;
+}
+
+
+/* Quiz Area */
+#aiwa_quiz_area {
+    padding: 15px;
+    margin-bottom: 15px;
+    text-align: center; /* Center content within the quiz area */
+}
+
+#aiwa_question_prompt {
+    font-style: italic;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    min-height: 1.2em; /* Prevent layout shift */
+}
+
+.aiwa_word_card {
+    background-color: var(--card-background);
+    padding: 30px 20px;
+    margin: 0 auto 20px auto; /* Centered card */
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+    min-height: 80px; /* Ensure space for word */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#aiwa_word_to_translate {
+    font-size: 2.2em; /* Larger for prominence */
+    font-weight: bold;
+    color: var(--primary-color);
+    line-height: 1.2;
+}
+
+/* Input Group */
+.aiwa_input_group {
+    margin-bottom: 20px;
+}
+
+.aiwa_input_group label {
+    display: block; /* Makes label take full width, good for mobile */
+    margin-bottom: 8px;
+    font-weight: bold;
+    text-align: left; /* Align label text to the left */
+}
+
+#aiwa_answer_input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1.1em;
+    box-sizing: border-box; /* Important for width: 100% */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#aiwa_answer_input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    outline: none;
+}
+
+/* Action Buttons */
+.aiwa_action_buttons {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically on mobile */
+    gap: 10px; /* Space between stacked buttons */
+}
+
+.aiwa_action_buttons button {
+    width: 100%; /* Make buttons full width */
+}
+
+#aiwa_submit_answer,
+#aiwa_next_question {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    font-size: 1.1em;
+    font-weight: bold;
+}
+#aiwa_submit_answer:hover,
+#aiwa_next_question:hover {
+    background-color: var(--primary-color-dark);
+}
+
+#aiwa_speak_word {
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
+    font-size: 1em; /* Icon can be larger via font-size if it's a font icon */
+}
+#aiwa_speak_word:hover {
+    background-color: #5a6268;
+}
+
+
+/* General Button Styles */
+button {
+    padding: 12px 18px; /* Larger padding for touch */
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+    text-align: center;
+}
+button:active {
+    transform: translateY(1px); /* Subtle press effect */
+}
+button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+button:focus-visible {
+    outline: 2px solid var(--primary-color-dark);
+    outline-offset: 2px;
+}
+
+
+/* Feedback Area - Crucial for "Fun" */
+#aiwa_feedback_area {
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: bold;
+    min-height: 2.5em; /* Prevent layout jank */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#aiwa_feedback_area.correct {
+    background-color: var(--correct-color);
+    color: var(--light-text-color);
+    animation: feedback-pop 0.3s ease-out;
+}
+
+#aiwa_feedback_area.incorrect {
+    background-color: var(--incorrect-color);
+    color: var(--light-text-color);
+    animation: feedback-shake 0.5s ease-in-out;
+}
+
+#aiwa_feedback_area .feedback-text { /* Span to hold the text "Correct!" or "Incorrect..." */
+    margin-right: 8px;
+}
+#aiwa_feedback_area .feedback-icon { /* For a checkmark or X icon */
+    font-size: 1.3em;
+}
+#aiwa_feedback_area .correct-answer-text {
+    display: block; /* New line for the correct answer */
+    font-size: 0.9em;
+    font-weight: normal;
+    margin-top: 5px;
+}
+
+
+@keyframes feedback-pop {
+    0% { transform: scale(0.9); opacity: 0.5; }
+    70% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes feedback-shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+
+/* Score, Streak, and Progress */
+#aiwa_progress_and_score {
+    padding: 10px 15px;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 15px;
+}
+
+#aiwa_score_area,
+#aiwa_streak_area {
+    font-size: 1em;
+    color: var(--secondary-color);
+    text-align: center; /* Center score and streak */
+    margin-bottom: 10px;
+}
+#aiwa_score_area span,
+#aiwa_streak_area span {
+    font-weight: bold;
+    color: var(--text-color);
+}
+#aiwa_current_streak {
+    color: var(--primary-color) !important; /* Make streak number stand out */
+}
+
+
+#aiwa_progress_bar_container {
+    width: 100%;
+    background-color: var(--border-color);
+    border-radius: 20px; /* Highly rounded */
+    height: 15px; /* Slimmer progress bar */
+    overflow: hidden; /* Ensure inner bar respects rounding */
+    margin-top: 10px;
+}
+
+#aiwa_progress_bar {
+    width: 0%; /* Controlled by JS */
+    height: 100%;
+    background-color: var(--correct-color); /* Use correct color for progress */
+    border-radius: 20px;
+    transition: width 0.5s ease-in-out;
+}
+
+
+/* Screen Reader Only Text */
+.aiwa_sr_only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* Minor Adjustments for Slightly Wider Screens (Optional Tablet) */
+@media (min-width: 400px) {
+    .aiwa_action_buttons {
+        flex-direction: row; /* Buttons side-by-side if space */
+        justify-content: space-between;
+    }
+    .aiwa_action_buttons button {
+        width: auto; /* Allow buttons to size based on content */
+        flex-grow: 1; /* Distribute space among buttons */
+    }
+    .aiwa_action_buttons #aiwa_speak_word {
+        flex-grow: 0; /* Don't let speak button grow too much */
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}

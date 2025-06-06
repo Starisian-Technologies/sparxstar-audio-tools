@@ -1,0 +1,57 @@
+#aiwa_quiz_area,
+#aiwa_feedback_area,
+#aiwa_score_area {
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#aiwa_word_to_translate {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+#aiwa_answer_input {
+    padding: 10px;
+    margin-right: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: calc(100% - 120px);
+    max-width: 300px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button:hover {
+    /* You may want to add a border or shadow here for accessibility instead */
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+#aiwa_feedback_area .correct-answer {
+    font-weight: bold;
+}
+
+#aiwa_feedback_area {
+    min-height: 1.5em;
+}
+
+.aiwa_sr_only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
