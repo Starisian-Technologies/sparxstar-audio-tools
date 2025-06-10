@@ -1,0 +1,6 @@
+services:
+  SPARXSTARuniverse:
+    image: SPARXSTARuniverse
+    build:
+      context: .
+      dockerfile: ./Dockerfile
