@@ -97,7 +97,11 @@ class SparxATApiHandler
         $ext = strtolower(pathinfo($original_name, PATHINFO_EXTENSION));
         $is_mp3 = ($ext === 'mp3');
         $filename = 'track-edit-' . $original_post_id . '-' . time() . '.' . ($is_mp3 ? 'mp3' : 'wav');
-        $mime_type = $is_mp3 ? 'audio/mpeg' : 'audio/wav';
+        // In handle_editor_upload()
+        $file_tmp_path = $file['tmp_name'];
+        $mime_type = mime_content_type($file_tmp_path); 
+        $ext = ($mime_type === 'audio/mpeg') ? 'mp3' : 'wav'; // Or use a more robust lookup
+        $filename = 'track-edit-' . $original_post_id . '-' . time() . '.' . $ext;
 
         $upload = wp_upload_bits($filename, null, file_get_contents($file['tmp_name']));
         if (!empty($upload['error'])) {
@@ -111,6 +115,8 @@ class SparxATApiHandler
             'post_status'    => 'inherit'
         ], $upload['file']);
 
+        // This file is required because it contains the wp_generate_attachment_metadata() function,
+        // which is used for all media types, not just images.
         require_once(ABSPATH . 'wp-admin/includes/image.php');
         wp_update_attachment_metadata($attachment_id, wp_generate_attachment_metadata($attachment_id, $upload['file']));
         

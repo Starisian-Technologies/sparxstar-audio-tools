@@ -39,6 +39,8 @@ $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 define('SPARX_AT_AIMASTERING_API_KEY', $_ENV['AIMASTERING_API_KEY']);
+define('SPARXAT_AIMASTERING_KEY', SPARX_AT_AIMASTERING_API_KEY); // For backward compatibility
+define('SPARXAT_TRACK_AUDIO_FIELD_KEY', $_ENV['SCF_AUDIO_FIELD_KEY'] ); // ACF field key for audio file
 /**
  * Class SPARXSTAR
  *
