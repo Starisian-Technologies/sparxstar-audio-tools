@@ -1,3 +1,9 @@
+// File: assets/js/sparxstar-audio-tools-aimastering.js
+//         mutationsList.forEach(mutation => {
+//             if (mutation.type === 'childList' || mutation.type === 'attributes') {
+//             if (mutation.type === 'childList' || mutation.type === 'attributes') {
+// SparxStar Audio Tools - AI Mastering and Status Management
+
 import $ from 'jquery';
 
 jQuery(document).ready(($) => {

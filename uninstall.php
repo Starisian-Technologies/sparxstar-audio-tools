@@ -12,7 +12,7 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 // Check if the main plugin class and DatabaseManager class exist before trying to use them
 // This is important because uninstall can be triggered even if the plugin had errors loading
 // Path to DatabaseManager class file
-$dbManagerClassFile = AiWA_PATH . 'src/core/DatabaseManager.php';
+$dbManagerClassFile = Starisian Technologies_PATH . 'src/core/DatabaseManager.php';
 
 if (file_exists($dbManagerClassFile)) {
     require_once $dbManagerClassFile;

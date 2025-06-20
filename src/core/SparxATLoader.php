@@ -12,7 +12,7 @@ class SparxATLoader {
     /**
      * Main SparxATLoader Instance.
      */
-    public static function instance() {
+    public static function instance(): SparxATLoader {
         if ( is_null( self::$instance ) ) {
             self::$instance = new self();
         }
@@ -32,14 +32,14 @@ class SparxATLoader {
     /**
      * Setup the Admin Menu.
      */
-    public function admin_menu() {
+    public function admin_menu(): void {
         add_menu_page('Sparxstar Audio Tools Universe', 'Sparxstar Audio', 'manage_options', 'sparxstar-audio-tools-universe', [\SPARXSTAR\src\admin\SparxATAdminDisplay::class, 'render'], 'dashicons-admin-generic', 6);
     }
 
     /**
      * Enqueues scripts and styles for the WordPress admin area.
      */
-    public function enqueue_admin_assets($hook) {
+    public function enqueue_admin_assets($hook): void {
         // Only load our editor assets on the 'track' CPT edit screen.
         if (('post.php' === $hook || 'post-new.php' === $hook) && get_post_type() === 'track') {
             
@@ -65,7 +65,7 @@ class SparxATLoader {
     /**
      * Enqueues assets for the public-facing side of the site (for shortcodes).
      */
-    public function enqueue_frontend_assets() {
+    public function enqueue_frontend_assets(): void {
         global $post;
         // This is for your existing [SparxAT_mastering_status] shortcode
         if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'SparxAT_mastering_status')) {

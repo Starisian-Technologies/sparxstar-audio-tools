@@ -1,6 +1,8 @@
 <?php
 namespace SPARXSTAR\src\includes;
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 /**
  * Simple PSR-4 class autoloader.
  *
@@ -8,19 +10,19 @@ namespace SPARXSTAR\src\includes;
  * It expects classes to be in the 'SPARXSTAR\src\includes' namespace
  * and reside in the 'src/' directory relative to the plugin root.
  */
-class Autoloader {
+class SparxATAutoloader {
 
     /**
      * Registers the autoloader with SPL.
      */
-    public static function register() {
+    public static function register(): void {
         spl_autoload_register( [ __CLASS__, 'loadClass' ] );
     }
 
     /**
      * Unregisters the autoloader.
      */
-    public static function unregister() {
+    public static function unregister(): void {
         spl_autoload_unregister( [ __CLASS__, 'loadClass' ] );
     }
 
@@ -29,10 +31,14 @@ class Autoloader {
      *
      * @param string $className The fully qualified class name.
      */
-    public static function loadClass( $className ) {
+    public static function loadClass( $className ): void {
         // Define your base namespace and base directory.
-        $baseNamespace = 'SPARXSTAR\\src\\'; // Adjust this to match your namespace.
-        $baseDir = SparxAT_PATH . 'src/'; // SparxAT_PATH is defined in main plugin file.
+        if ( ! defined( 'SPARXAT_NAMESPACE' ) || ! defined( 'SPARXAT_PATH' ) ) {
+            error_log( "Autoloader: SPARXAT_NAMESPACE or SPARXAT_PATH is not defined." );
+            return;
+        }
+        $baseNamespace = SPARXAT_NAMESPACE; // Adjust this to match your namespace.
+        $baseDir = SPARXAT_PATH . 'src/'; // SPARXAT_PATH is defined in main plugin file.
 
         // Does the class use the namespace prefix?
         $len = strlen( $baseNamespace );
@@ -54,7 +60,7 @@ class Autoloader {
             require_once $file;
         } else {
             // Optionally, log an error if a class file is expected but not found.
-             // error_log( "Autoloader: File not found for class {$className} at {$file}" );
+            error_log( "Autoloader: File not found for class {$className} at {$file}" );
         }
     }
 }

@@ -1,6 +1,6 @@
-# Security Policy – AiWA Governance Repository
+# Security Policy – Starisian Technologies Governance Repository
 
-This document defines the security reporting and disclosure policy for the AiWA Governance Repository, which may contain culturally sensitive, ethically governed, and AI-training related data and code.
+This document defines the security reporting and disclosure policy for the Starisian Technologies Governance Repository, which may contain culturally sensitive, ethically governed, and AI-training related data and code.
 
 ## Reporting a Vulnerability
 
@@ -29,7 +29,7 @@ We follow **coordinated disclosure**. If you report a vulnerability in good fait
 
 The following are in scope:
 
-- All repositories under [AiWA-Ai-West-Africa](https://github.com/AiWA-Ai-West-Africa)
+- All repositories under [Starisian Technologies-Ai-West-Africa](https://github.com/Starisian Technologies-Ai-West-Africa)
 - Scripts or workflows used in GitHub Actions
 - Sensitive AI training data pipelines or governance mechanisms
 

@@ -1,6 +1,8 @@
 <?php // In: src/includes/SparxATCron.php
 namespace SPARXSTAR\src\includes;
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 use function add_action;
 use function get_attached_file; 
 use function get_field;

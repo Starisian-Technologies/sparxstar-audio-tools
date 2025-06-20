@@ -32,7 +32,9 @@ if (!defined('SPARXAT_URL')) {
 if (!defined('SPARXAT_VERSION')) {
 	define('SPARXAT_VERSION', '1.0.0'); // Match plugin header version
 }
-
+if (!defined('SPARXAT_NAMESPACE')) {
+	define('SPARXAT_NAMESPACE', 'SPARXSTAR\\src\\'); // Define the namespace for autoloading
+}
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable(__DIR__);
